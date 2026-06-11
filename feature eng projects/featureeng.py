@@ -2,7 +2,7 @@
 """
 Created on Sat Jun  6 21:10:15 2026
 
-@author: syeda
+@author: syeda Bisma
 """
 
 import numpy as np
@@ -111,6 +111,7 @@ gender_vs_course= pd.crosstab(
     df["course"]
 )
 gender_vs_course.plot(kind='bar')
+plt.title('Gender & Course')
 plt.xlabel('gender')
 plt.ylabel('course')
 plt.show()
