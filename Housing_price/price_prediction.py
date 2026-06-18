@@ -11,9 +11,9 @@ import numpy as np;
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from datetime import datetime
-import matplotlib.pyplot as plt;
 
-df=pd.read_csv(r"OneDrive\Desktop\Datasci\Housing_price\real_estate_dataset.csv")
+
+df=pd.read_csv(r"real_estate_dataset.csv")
 print(df.head(5))
 print(df.shape)
 print(df.isna().sum())
@@ -59,6 +59,3 @@ all_pridictions = model.predict(X)
 df["all_Predicted_price"]=all_pridictions
 
 
-#//plots 
-
-plt.plot(X,Y)m
