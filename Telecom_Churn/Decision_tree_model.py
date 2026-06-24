@@ -21,7 +21,7 @@ df = pd.read_csv(r"C:\Users\syeda\OneDrive\Desktop\Datasci\Telecom_Churn\Telecom
 
 
 print(df.head(6))
-
+print(df.columns)
 
 X=df.drop(columns=["Customer ID","Dummy_Customer_id","Target"])
 y=df["Target"]
@@ -34,11 +34,13 @@ X_train,X_test,y_train,y_test=train_test_split(
     )
 print(df["Age_Bucket_Converted"].unique())
 
-model = DecisionTreeClassifier(
-    max_depth=3,
-    random_state=42
-    )
 
+model=DecisionTreeClassifier(
+    max_depth=3,
+    min_samples_split=20,
+    min_samples_leaf=10,
+    random_state=42
+)
 model.fit(X_train,y_train)
 
 y_pred=model.predict(X_test)
@@ -57,3 +59,15 @@ plot_tree(
 )
 
 plt.show()
+
+all_predictions=model.predict(X)
+df["Predicted_Result"] = all_predictions
+
+
+df.to_csv(
+    r"C:\Users\syeda\OneDrive\Desktop\Datasci\Telecom_Churn\Telecom_Predicted.csv",
+    index=False
+)
+
+print("File Saved Successfully!")
+
